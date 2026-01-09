@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Images;
 use App\Models\teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,11 +19,20 @@ class TeacherController extends Controller
             "name"=>"required|min:5|max:20",
             "phone_number"=>"required|min:10|max:13",
         ]);
+        $path = null;
+        if($request->hasFile('image')){
+            $path = $request->file('image')->store('Images','public');
+        }
         $teacher =  new teacher();
         $teacher->name = $request->name;
         $teacher->phone_number = $request->number;
         $teacher->user_id = $request->userId;
         $teacher->save();
+        $img = new Images;
+        $img->path = $path;
+        $img->imageable_id = $teacher->id;
+        $img->imageable_type = teacher::class;
+        $img->save();
         return redirect('/');
     }
     public function shoing($id){

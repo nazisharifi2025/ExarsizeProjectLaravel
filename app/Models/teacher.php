@@ -9,4 +9,7 @@ class teacher extends Model
 {
     /** @use HasFactory<\Database\Factories\TeacherFactory> */
     use HasFactory;
+    public function Images(){
+        return $this->morphMany(Images::class,'imageable');
+    }
 }
