@@ -17,7 +17,7 @@ class teacheerMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $user = Auth::user();
-        if($user->name === 'Nazi'){
+        if($user->name !== 'Nazi'){
             return redirect('dashboard');
         }
         return $next($request);

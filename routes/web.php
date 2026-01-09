@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Middleware\teacheerMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -21,8 +22,9 @@ Route::middleware('auth')->group(function () {
 Route::prefix('teacher')->controller(TeacherController::class)->middleware(teacheerMiddleware::class)->group(function(){
     Route::get('insert' , 'User');
     Route::post('Insert' ,'Insert');
-    Route::get('shoing' , "shoing");
+    Route::get('shoing/{id}' , "shoing");
     Route::get('shoing2/{id}' , "shoingData");
     Route::get('shoing3' , "shoingFilter");
 });
+Route::get('shoing/{id}' , [StudentController::class , 'shoing']);
 require __DIR__.'/auth.php';

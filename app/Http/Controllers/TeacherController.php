@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate ;
 
 class TeacherController extends Controller
 {
@@ -24,8 +25,9 @@ class TeacherController extends Controller
         $teacher->save();
         return redirect('/');
     }
-    public function shoing(){
-        $teacher = teacher::all();
+    public function shoing($id){
+        $teacher = teacher::findOrfail($id);
+         Gate::authorize('show', $teacher);
         return $teacher;
     }
     public function shoingData($id){
