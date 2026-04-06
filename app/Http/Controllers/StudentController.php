@@ -32,5 +32,6 @@ class StudentController extends Controller
         $Student->lastName = $request->lastName;
         $Student->email = $request->email;
         $Student->dob = $request->dob;
+        $Student->gender = $request->gender;
     }
 }
