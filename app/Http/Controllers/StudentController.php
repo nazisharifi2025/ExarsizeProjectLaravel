@@ -43,4 +43,8 @@ class StudentController extends Controller
         $student->delete();
         return redirect('/');
     }
+    public function showing(string $id){
+        $student = student::findOrFail($id);
+        return $student;
+    }
 }
