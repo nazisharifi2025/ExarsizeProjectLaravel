@@ -38,4 +38,7 @@ class StudentController extends Controller
         $Student->update();
         return redirect('/');
     }
+    public function delete(string $id){
+        $student = student::findOrFail($id);
+    }
 }
