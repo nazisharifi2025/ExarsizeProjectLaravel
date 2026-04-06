@@ -28,5 +28,6 @@ class StudentController extends Controller
     }
     public function create(Request $request){
         $Student =  new student();
+        $Student->name = $request->name ;
     }
 }
