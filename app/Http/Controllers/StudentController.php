@@ -26,4 +26,7 @@ class StudentController extends Controller
     // })->get();
     //    return $st ;
     }
+    public function create(Request $request){
+        $Student =  new student();
+    }
 }
