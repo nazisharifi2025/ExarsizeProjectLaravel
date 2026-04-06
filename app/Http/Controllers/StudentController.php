@@ -30,6 +30,7 @@ class StudentController extends Controller
         $Student =  new student();
         $Student->name = $request->name ;
         $Student->lastName = $request->lastName;
-        $Student->email = $request->email
+        $Student->email = $request->email;
+        $Student->dob = $request->dob;
     }
 }
