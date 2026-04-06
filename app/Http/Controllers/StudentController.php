@@ -35,5 +35,7 @@ class StudentController extends Controller
         $Student->gender = $request->gender;
         $Student->userId = $request->userId;
         $Student->classId = $request->classId;
+        $Student->update();
+        return redirect('/');
     }
 }
